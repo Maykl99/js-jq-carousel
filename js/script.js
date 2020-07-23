@@ -1,6 +1,19 @@
 $(document).ready(function(){
     $('.nav i').click(function(){
-        navClick();
+        //navClick();
+        var cerchioAttivo=$('.nav i.first');
+        cerchioAttivo.removeClass('active');
+        
+        $(this).addClass('active');
+        
+        
+        var click=$(this).index(); //individuo l'index del pallino cliccato
+        console.log(click);
+        var img=$('.img-container img').eq(click);  // individuo l'immagine con lo stesso index del pallino cliccato
+        //console.log(img)
+        $('.img-container img.active').removeClass('active');
+        img.addClass('active');
+
     });
 
     $('.prev').click(function(){
@@ -17,51 +30,39 @@ $(document).ready(function(){
 // funzioni
 function nextImg(){
     var activeImg=$('.img-container .active');
-   /*  var cerchioAttivo=$('.nav i.active');
-    cerchioAttivo.removeClass('active'); */
 
-    activeImg.removeClass('active').next().addClass('active');
+    var cerchioAttivo=$('.nav i.active');
+    cerchioAttivo.removeClass('active');
+
     if(activeImg.hasClass('close')){
+        activeImg.removeClass('active');
         $('.img-container .first').addClass('active');
-        //$('.nav i.first').addClass('active');
+        $('.nav i.first').addClass('active');
     }else{
         activeImg.next().addClass('active');
-        //cerchioAttivo.next().addClass('active');
+        activeImg.removeClass('active').next().addClass('active');
+        cerchioAttivo.next().addClass('active');
     }
+
+    
 }
 
 function prevImg(){ 
     var activeImg=$('.img-container .active');
-    //var cerchioAttivo=$('.nav i.active');
-    //cerchioAttivo.removeClass('active');
 
-    activeImg.removeClass('active').next().addClass('active');
-    if(activeImg.hasClass('close')){
-        $('.img-container .first').addClass('active');
-        //$('.nav i.first').addClass('active');
+    var cerchioAttivo=$('.nav i.active');
+    cerchioAttivo.removeClass('active');
+
+    if(activeImg.hasClass('first')){
+        activeImg.removeClass('active');
+        $('.img-container img.close').addClass('active');
+        $('.nav i.last').addClass('active');
     }else{
-        activeImg.next().addClass('active');
-        //cerchioAttivo.next().addClass('active');
+        activeImg.prev().addClass('active');
+        activeImg.removeClass('active').prev().addClass('active');
+        cerchioAttivo.prev().addClass('active');
     }
 }
-
-
-// punto il cerchio deve corrispondere all'immagine
-function navClick(){ // funzione mostra img
-    var activeImage=$('.img-container .active'); // seleziono il contenitore che contiene l'img con classe .active
-    var cerchio=$('.nav i.active'); // seleziono il contenitore nav che contiene il tag i con la classe .active
-    activeImage.removeClass('active').next().addClass('active'); // alla prima immagine tolgo la classe /// poi l'assegno al suo fratello
-    if(activeImag.hasClass('close') || cerchio.hasClass('last')){ // SE il tag img che contiene .active ha anche la classe .close AND il tag i che ha la classe .active ha anche la classe .last
-        $('.img-container .first').addClass('active'); // esegui questo, cioè il tag img che ha la classe .first riassume la classe .active
-        $('nav i.first').addClass('active');   // esegui questo, cioè il tag i che ha la classe .first riassume la classe .active
-    }else{
-        activeImage.next().addClass('active'); //l'img con la classe .active lo passa al suo fratello 
-        cerchio.next().addClass('active'); // la i con la classe .active lo passa al suo
-    }
-
-}
-
-
 
 
 
