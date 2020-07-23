@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.img-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container img{
+    display: none;
+}
+
+.img-container img.active{
+    display: flex;
+    width: 70%;
+}
+
+div[class^="arrow-"]{
+    font-size: 45px;
+    cursor: pointer;
+}
+
+div.arrow-left{
+    margin-right: 10px;
+}
+
+div.arrow-right{
+    margin-left: 10px;
+}
+
+.nav{
+    position: absolute;
+    top: 90%;
+}
+
+.nav i{
+    color: brown;
+}
+
+.nav i.active{
+    color: rgb(54, 87, 208);
+}
