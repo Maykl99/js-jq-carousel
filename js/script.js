@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('.nav i').click(function(){
         //navClick();
-        var cerchioAttivo=$('.nav i.first');
+        var cerchioAttivo=$('.nav i.active');
         cerchioAttivo.removeClass('active');
         
         $(this).addClass('active');
